@@ -18,7 +18,12 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "test", "lint", "e2e"]
+        "cacheableOperations": [
+          "build",
+          "test",
+          "lint",
+          "e2e"
+        ]
       }
     }
   },
@@ -28,7 +33,9 @@
     },
     "store-e2e": {
       "tags": [],
-      "implicitDependencies": ["store"]
+      "implicitDependencies": [
+        "store"
+      ]
     },
     "store-ui-shared": {
       "tags": []
@@ -40,6 +47,9 @@
       "tags": []
     },
     "api": {
+      "tags": []
+    },
+    "util-interface": {
       "tags": []
     }
   }
