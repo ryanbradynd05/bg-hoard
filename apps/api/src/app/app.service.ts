@@ -30,13 +30,6 @@ const games = [
 
 @Injectable()
 export class AppService {
-  getData(): { message: string } {
-    return { message: 'Welcome to api!' };
-  }
-  getAllGames() {
-    return games;
-  }
-  getGame(id: string) {
-    return games.find(game => game.id === id);
-  }
+  getAllGames = () => games;
+  getGame = (id: string) => games.find((game) => game.id === id);
 }
