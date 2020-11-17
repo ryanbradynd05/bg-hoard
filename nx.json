@@ -22,7 +22,8 @@
           "build",
           "test",
           "lint",
-          "e2e"
+          "e2e",
+          "build-storybook"
         ]
       }
     }
@@ -51,6 +52,12 @@
     },
     "util-interface": {
       "tags": []
+    },
+    "store-ui-shared-e2e": {
+      "tags": [],
+      "implicitDependencies": [
+        "store-ui-shared"
+      ]
     }
   }
 }
