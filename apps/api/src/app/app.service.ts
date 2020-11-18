@@ -3,8 +3,8 @@ import { Game } from '@bg-hoard/util-interface';
 
 export const games: Game[] = [
   {
-    id: 'settlers-in-the-can',
-    name: 'Settlers in the Can',
+    id: 'settlers-in-the-caravan',
+    name: 'Settlers in the Caravan',
     image: '/assets/beans.png', // 'https://media.giphy.com/media/xUNda3pLJEsg4Nedji/giphy.gif',
     description:
       'Help your bug family claim the best real estate in a spilled can of beans.',
