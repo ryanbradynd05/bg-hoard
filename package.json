@@ -71,6 +71,7 @@
     "cypress": "^5.5.0",
     "dotenv": "6.2.0",
     "eslint": "7.10.0",
+    "husky": "^4.3.0",
     "jest": "26.2.2",
     "jest-preset-angular": "8.3.1",
     "prettier": "2.1.2",
