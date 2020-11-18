@@ -1,6 +1,6 @@
 import { Test } from '@nestjs/testing';
 
-import { AppService } from './app.service';
+import { AppService, games } from './app.service';
 
 describe('AppService', () => {
   let service: AppService;
@@ -13,9 +13,15 @@ describe('AppService', () => {
     service = app.get<AppService>(AppService);
   });
 
-  describe('getData', () => {
-    it('should return "Welcome to api!"', () => {
-      expect(service.getData()).toEqual({ message: 'Welcome to api!' });
+  describe('getAllGames', () => {
+    it('should return the games', () => {
+      expect(service.getAllGames()).toEqual(games);
+    });
+  });
+
+  describe('getGame', () => {
+    it('should return a specific game', () => {
+      expect(service.getGame('settlers-in-the-can')).toEqual(games[0]);
     });
   });
 });
