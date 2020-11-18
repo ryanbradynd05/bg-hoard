@@ -23,6 +23,7 @@
               "optimization": true,
               "extractLicenses": true,
               "inspect": false,
+              "externalDependencies": "none",
               "fileReplacements": [
                 {
                   "replace": "apps/api/src/environments/environment.ts",
@@ -56,6 +57,23 @@
           "options": {
             "jestConfig": "apps/api/jest.config.js",
             "passWithNoTests": true
+          }
+        },
+        "deploy": {
+          "builder": "@nrwl/workspace:run-commands",
+          "outputs": [],
+          "options": {
+            "commands": [
+              "cp ../../../apps/api/Dockerfile .",
+              "cp ../../../package.json .",
+              "cp ../../../yarn.lock .",
+              "yarn",
+              "heroku container:login",
+              "heroku container:push web -a rbrady-bg-hoard",
+              "heroku container:release web -a rbrady-bg-hoard"
+          ],
+            "cwd": "dist/apps/api",
+            "parallel": false
           }
         }
       }
