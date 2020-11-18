@@ -34,9 +34,7 @@
     },
     "store-e2e": {
       "tags": ["scope:store", "type:e2e"],
-      "implicitDependencies": [
-        "store"
-      ]
+      "implicitDependencies": ["store"]
     },
     "store-ui-shared": {
       "tags": ["scope:store", "type:ui"]
@@ -55,9 +53,10 @@
     },
     "store-ui-shared-e2e": {
       "tags": ["scope:store", "type:e2e"],
-      "implicitDependencies": [
-        "store-ui-shared"
-      ]
+      "implicitDependencies": ["store-ui-shared"]
+    },
+    "api-util-notifications": {
+      "tags": ["type:util", "scope:api"]
     }
   }
 }
