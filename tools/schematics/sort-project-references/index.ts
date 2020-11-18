@@ -1,41 +1,25 @@
 import { chain, Rule } from '@angular-devkit/schematics';
 import { updateJsonInTree } from '@nrwl/workspace';
 import { formatFiles } from '@nrwl/workspace';
+import { get, set } from 'lodash';
 
-function incrementVersion(): Rule {
-  return updateJsonInTree('workspace.json', (json) => {
-    json.version++;
+function sortKeysAtJsonPath(path: string, jsonPath: string[]): Rule {
+  return updateJsonInTree(path, (json) => {
+    const unordered = get(json, jsonPath);
+    const sorted = {};
+    Object.keys(unordered).sort().forEach(key => {
+      sorted[key] = unordered[key];
+    });
+    set(json, jsonPath, sorted);
     return json;
   });
-}
-
-function sortWorkspaceProjects(): Rule {
-  return updateJsonInTree('workspace.json', (json) => {
-    json.projects = sortObjectKeys(json.projects);
-    return json;
-  });
-}
-
-function sortNxProjects(): Rule {
-  return updateJsonInTree('nx.json', (json) => {
-    json.projects = sortObjectKeys(json.projects);
-    return json;
-  });
-}
-
-function sortObjectKeys(obj: any) {
-  const sorted = {};
-  Object.keys(obj).sort().forEach(key => {
-    sorted[key] = obj[key];
-  });
-  return sorted;
 }
 
 export default function (schema: any): Rule {
   return chain([
-    incrementVersion(),
-    sortWorkspaceProjects(),
-    sortNxProjects(),
+    sortKeysAtJsonPath('workspace.json', ['projects']),
+    sortKeysAtJsonPath('nx.json', ['projects']),
+    sortKeysAtJsonPath('tsconfig.base.json', ['compilerOptions', 'paths']),
     formatFiles()
   ]);
 }
