@@ -10,6 +10,16 @@
         "$source": "argv",
         "index": 0
       }
+    },
+    "directory": {
+      "type": "string",
+      "description": "Library directory",
+      "x-prompt": "Which directory do you want the lib to be in?",
+      "enum": [
+        "store",
+        "api",
+        "shared"
+      ]
     }
   },
   "required": ["name"]
